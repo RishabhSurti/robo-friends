@@ -1,0 +1,8 @@
+<div>
+    <div class=" tc bg-light-green dib br3 pa3 ma2 grow bw2 shadow-5" *ngFor = 'let robot of filterArray'>
+        <img src="https://robohash.org/{{robot.id}}" alt="image">
+        <h3>{{robot.name}}</h3>
+        <p>{{robot.email}}</p>
+        <!-- <p>{{filterString}}</p> -->
+   </div>
+</div>
