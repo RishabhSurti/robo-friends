@@ -1,5 +1,7 @@
 import { Component, OnInit,Input,OnChanges } from '@angular/core';
 import { robots } from 'src/app/users';
+import { Robot } from '../../models/robot.interface'
+
 
 @Component({
   selector: 'app-card',
@@ -8,23 +10,25 @@ import { robots } from 'src/app/users';
 })
 export class CardComponent implements OnInit,OnChanges {
 
-  filterArray:any
+  @Input()
+  robotArray: Robot[];
+  @Input()
+  filterString: string;
+
+  filterArray:Robot[]
   constructor() { }
 
-  ngOnInit(): any
+  ngOnInit(): Robot[]
   {
-    this.filterArray = this.robotArray;
+    return this.filterArray = this.robotArray;
   }
 
-  ngOnChanges(changes)
+  ngOnChanges(changes):Robot[]
   {
-    this.filterArray = this.robotArray.filter(robot => robot.name.toLowerCase().includes(this.filterString.toLowerCase()));
+    return this.filterArray = (this.robotArray||[]).filter(robot => robot.name.toLowerCase().includes(this.filterString.toLowerCase()));
   }
 
-  @Input()
-  robotArray: any;
-  @Input()
-  filterString: any;
+
 
 
 

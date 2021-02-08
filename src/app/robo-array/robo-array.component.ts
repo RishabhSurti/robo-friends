@@ -1,6 +1,7 @@
 import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { Component, OnInit, Input,OnChanges } from '@angular/core';
 import { RoboArrayComponentService } from './robo-array.component.service'
+import {Robot} from '../models/robot.interface'
 
 @Component({
   selector: 'app-robo-array',
@@ -8,20 +9,19 @@ import { RoboArrayComponentService } from './robo-array.component.service'
   styleUrls: ['./robo-array.component.css']
 })
 export class RoboArrayComponent implements OnInit {
-  robotArray: any;
+  robotArray: Robot[];
 
   constructor(public RoboArrayService:RoboArrayComponentService) { }
 
-  ngOnInit(): any
+  ngOnInit()
   {
     this.RoboArrayService.getUsers().subscribe((data) =>
-    {
-      this.robotArray = data;
-    });
+    this.robotArray = data)
+
   }
 
   @Input()
-  filterString;
+  filterString:string;
 
   // filterArray = this.robotArray.filter(robot => robot.name.includes(this.filterString));
 
