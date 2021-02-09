@@ -34,4 +34,5 @@ export class CardComponent implements OnInit,OnChanges {
     console.log(this.filterArray)
 
   }
+
 }

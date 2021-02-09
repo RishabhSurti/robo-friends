@@ -1,4 +1,3 @@
-import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { Component, OnInit, Input,OnChanges } from '@angular/core';
 import { RoboArrayComponentService } from './robo-array.component.service'
 import {Robot} from '../models/robot.interface'
