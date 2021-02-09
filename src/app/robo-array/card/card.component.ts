@@ -1,5 +1,4 @@
 import { Component, OnInit,Input,OnChanges } from '@angular/core';
-import { robots } from 'src/app/users';
 import { Robot } from '../../models/robot.interface'
 
 
@@ -15,21 +14,24 @@ export class CardComponent implements OnInit,OnChanges {
   @Input()
   filterString: string;
 
-  filterArray:Robot[]
+  filterArray: Robot[]
+
+  re: RegExp;
+
   constructor() { }
 
   ngOnInit(): Robot[]
   {
+    this.re = new RegExp(`^${this.filterString}`,"i");
     return this.filterArray = this.robotArray;
   }
 
   ngOnChanges(changes):Robot[]
   {
-    return this.filterArray = (this.robotArray||[]).filter(robot => robot.name.toLowerCase().includes(this.filterString.toLowerCase()));
+    // return this.filterArray = (this.robotArray||[]).filter(robot => robot.name.toLowerCase().includes(this.filterString.toLowerCase()));
+    this.re = new RegExp(`^${this.filterString}`,"i");
+    return this.filterArray = (this.robotArray || []).filter(robot =>robot.name.match(this.re));
+    console.log(this.filterArray)
+
   }
-
-
-
-
-
 }
