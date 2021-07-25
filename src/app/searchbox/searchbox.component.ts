@@ -8,13 +8,14 @@ import { Component, OnInit,Output,EventEmitter } from '@angular/core';
 export class SearchboxComponent implements OnInit
 {
 
-  placeholderChange = ""
+  placeholderChange = "Search Robots"
+  searchValue:string = '';
 
   constructor() { }
 
   ngOnInit(): void
   {
-    this.filterString.emit(this.placeholderChange)
+    this.filterString.emit(this.searchValue)
   }
 
   @Output()
@@ -22,8 +23,8 @@ export class SearchboxComponent implements OnInit
 
 inputChange(value)
   {
-   this.placeholderChange = value;
-   this.filterString.emit(this.placeholderChange)
+   this.searchValue = value;
+   this.filterString.emit(this.searchValue)
   }
 
 }
